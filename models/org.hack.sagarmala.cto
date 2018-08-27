@@ -1,0 +1,262 @@
+/*
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+namespace org.hack.sagarmala
+
+
+abstract participant Person identified by pID{
+  o String pID
+  o String name
+  --> Task[] pendingTasks
+}
+
+//CUSTOMER
+participant Cuctomer extends Person{
+}
+
+//VEHICLE OPERATING AGENT
+participant VOA extends Person{
+}
+
+//CONTAINER OPERATING AGENT
+participant COA extends Person{
+}
+
+
+//PORT AUTHORITY
+participant PA extends Person{
+}
+
+//IMMEGRATION AUTHORITY
+participant IMMIGRATION extends Person{
+}
+
+
+//CUSTOMS
+participant CUSTOMS extends Person{
+}
+
+//OTHER AUTHORITY 1
+participant PHO extends Person{
+}
+
+
+//OTHER AUTHORITY 1
+participant OA1 extends Person{
+}
+
+
+//OTHER AUTHORITY 2
+participant OA2 extends Person{
+}
+
+//LDB
+participant LDB extends Person{
+}
+
+
+//TERMINAL AUTHORITY
+participant TA extends Person{
+}
+
+//CUSTOM HOUSE AGENT
+participant CHA extends Person{
+}
+
+
+enum DesignatedDelivery {
+  o DPD
+  o CFS
+  o ICD
+}
+
+enum TransportType {
+  o TRUCK
+  o TRAIN
+  o VESSEL
+}
+
+enum containerState {
+  o PREARRIVAL
+  o BERTH
+  o CONTAINERYARD
+  o TRANSPORT
+  o DELIVERED
+}
+
+
+
+/**
+ * A task asset.
+ */
+asset Task identified by taskID {
+  o String taskID
+  o String transactionId 
+  o String assigneeID
+  o String assigneeType
+  o String vesselID optional
+  o String containerID optional
+  o Boolean finished default=false 
+  o DateTime created_at optional
+  o DateTime completed_at optional
+  o String opt_details optional
+    
+}
+
+
+/**
+ * A container asset.
+ */
+asset Container identified by contID {
+  o String contID
+  o String DisplayId
+  o TransportType transportType
+  o containerState location
+  o DesignatedDelivery designated default="DPD"
+  o String transportID 
+  --> Cuctomer owner  
+  o String vesselID optional
+  --> Task[] tasks optional
+}
+
+
+
+/**
+ * A vessel asset.
+ */
+asset Vessel identified by vesselID {
+  o String vesselID
+  o String DisplayId
+  o String Name
+  --> Container[] containers
+  --> VOA voa optional
+  --> Task[] tasks optional
+  
+}
+
+event NotificationEvent {
+  
+}
+
+event TaskEvent {
+  --> Task task
+}
+
+transaction viaRegistered{
+   -->Vessel vessel
+   o String file_path
+}
+
+transaction IGMFiled{
+   -->Vessel vessel
+   o String file_path
+}
+
+transaction registeredVesselDetails{
+   -->Vessel vessel
+   o String file_path
+}
+  
+transaction requestedBerthAllocation{
+   -->Vessel vessel
+}
+  
+transaction BerthAllocated{
+   -->Vessel vessel
+   o String berth
+}
+
+transaction vesselInfoRegistered{
+   -->Vessel vessel
+}
+  
+transaction immigrationCompletedFormalities{
+   -->Vessel vessel
+}
+  
+transaction customsCompletedFormalities{
+   -->Vessel vessel
+}
+
+transaction PHOCompletedFormalities{
+   -->Vessel vessel
+}
+  
+transaction otherAuth1CompletedFormalities{
+   -->Vessel vessel
+}
+  
+transaction otherAuth2CompletedFormalities{
+   -->Vessel vessel
+}
+
+transaction vesselUnloadingStarted{
+   -->Vessel vessel
+}
+
+transaction vesselUnloadingEnded{
+   -->Vessel vessel
+}
+
+transaction vesselLoadingStarted{
+   -->Vessel vessel
+}
+
+transaction vesselLoadingEnded{
+   -->Vessel vessel
+}
+
+transaction containerDischarged{
+   -->Container container
+}
+
+transaction deliveryOrderIssued{
+   -->Container container
+}
+
+transaction billOfEntryRegistered{
+   -->Container container
+}
+
+transaction dutyPaid{
+   -->Container container
+}
+
+transaction deliveryRequested{
+   -->Container container
+}
+
+transaction jobOrderIssued{
+   -->Container container
+}
+
+transaction containerLoadedInTruck{
+   -->Container container
+}
+  
+transaction containerPortOut{
+   -->Container container
+}
+  
+ 
+
+  
+transaction dummy_cont{
+   -->Container container
+}
+
+transaction dummy_vessel{
+   -->Vessel vessel
+}
+

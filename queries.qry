@@ -1,0 +1,56 @@
+    /**
+    * New query file
+    */
+
+    query selectTaskInTransaction{
+        description: "select task by customerid and transactionid and vesselid"
+        statement:
+            SELECT org.hack.sagarmala.Task
+                WHERE ((finished==false) AND (transactionId==_$transactionidParam) AND ((vesselID==_$vesselParam) OR (containerID ==_$contParam) ) AND (assigneeID == _$assigneeParam))
+                
+    }
+
+    query selectContTaskInTransaction{
+        description: "select task by customerid and transactionid and vesselid"
+        statement:
+            SELECT org.hack.sagarmala.Task
+                WHERE ((finished==false) AND (transactionId==_$transactionidParam) AND (containerID ==_$contParam)  AND (assigneeID == _$assigneeParam))
+                
+    }
+
+
+    query checkTaskComplete{
+        description: "check if a given task is complete"
+        statement:
+            SELECT org.hack.sagarmala.Task
+                WHERE ((finished==true) AND (transactionId==_$transactionidParam) AND ((vesselID==_$vesselParam) OR (containerID ==_$contParam) ))
+                
+    }
+
+    query getListContainersOfVessel{
+        description: "get containers of a vessel"
+        statement:
+            SELECT org.hack.sagarmala.Container
+                WHERE (vesselID==_$vesselParam)
+                
+    }
+
+query getTasksForVessel{
+    description: "get tasks of a vessel"
+    statement:
+        SELECT org.hack.sagarmala.Task
+  			WHERE (vesselID==_$vesselParam)
+              
+}
+
+query getTasksForContainer{
+    description: "get tasks of a container"
+    statement:
+        SELECT org.hack.sagarmala.Task
+  			WHERE (containerID==_$contParam)
+              
+}
+
+
+    //  			
+
