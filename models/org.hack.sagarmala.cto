@@ -17,8 +17,8 @@ namespace org.hack.sagarmala
 
 abstract participant Person identified by pID{
   o String pID
-  o String name
-  --> Task[] pendingTasks
+  o String name optional
+  --> Task[] pendingTasks optional
 }
 
 //CUSTOMER
@@ -102,6 +102,7 @@ enum containerState {
  */
 asset Task identified by taskID {
   o String taskID
+  o String taskName optional
   o String transactionId 
   o String assigneeID
   o String assigneeType
@@ -121,11 +122,11 @@ asset Task identified by taskID {
 asset Container identified by contID {
   o String contID
   o String DisplayId
-  o TransportType transportType
-  o containerState location
+  o TransportType transportType optional
+  o containerState location optional
   o DesignatedDelivery designated default="DPD"
-  o String transportID 
-  --> Cuctomer owner  
+  o String transportID optional
+  --> Cuctomer owner  optional
   o String vesselID optional
   --> Task[] tasks optional
 }
@@ -260,3 +261,6 @@ transaction dummy_vessel{
    -->Vessel vessel
 }
 
+event TransactionNotification {
+    --> Task task
+}
