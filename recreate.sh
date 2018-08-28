@@ -1,4 +1,18 @@
-
+rm *.bna
+rm *.card 
+./stopFabric.sh
+./teardownFabric.sh
+./teardownAllDocker.sh
+rm -rf ~/.composer/
+./startFabric.sh
+./createPeerAdminCard.sh
+git pull
+cd ~/sagarmala/ship-blockchain
+composer archive create -t dir -n .
+composer network install --card PeerAdmin@hlfv1 --archiveFile sm@0.0.1.bna
+composer network start --networkName sm --networkVersion 0.0.1 --networkAdmin admin --networkAdminEnrollSecret adminpw --card PeerAdmin@hlfv1 --file networkadmin.card
+composer card import --file networkadmin.card
+ composer network ping --card admin@sm
 
 composer participant add -c admin@sm -d '{ "$class": "org.hack.sagarmala.VOA", "pID": "VOA11" }'
 composer participant add -c admin@sm -d '{ "$class": "org.hack.sagarmala.VOA", "pID": "VOA12" }'
@@ -15,3 +29,4 @@ composer participant add -c admin@sm -d '{ "$class": "org.hack.sagarmala.OA2", "
 composer participant add -c admin@sm -d '{ "$class": "org.hack.sagarmala.PA", "pID": "PA1" }'
 composer participant add -c admin@sm -d '{ "$class": "org.hack.sagarmala.PHO", "pID": "PHO1" }'
 composer participant add -c admin@sm -d '{ "$class": "org.hack.sagarmala.TA", "pID": "TA1" }'
+

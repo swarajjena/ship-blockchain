@@ -2,8 +2,8 @@
   "engines": {
     "composer": "^0.20.0"
   },
-  "name": "movehackdev",
-  "version": "0.0.2",
+  "name": "sma",
+  "version": "0.0.1",
   "description": "sagarmal hackathon",
   "scripts": {
     "prepublish": "mkdirp ./dist && composer archive create --sourceType dir --sourceName . -a ./dist/sagarmala.bna",
