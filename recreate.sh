@@ -1,5 +1,6 @@
 rm *.bna
 rm *.card 
+cd ~/fabric-dev-servers/
 ./stopFabric.sh
 ./teardownFabric.sh
 ./teardownAllDocker.sh
