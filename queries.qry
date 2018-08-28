@@ -51,6 +51,14 @@ query getTasksForContainer{
               
 }
 
+query getTasksForParticipant{
+    description: "get tasks of a user"
+    statement:
+        SELECT org.hack.sagarmala.Task
+  			WHERE (assigneeID==_$assigneeParam)
+              
+}
+
 
     //  			
 
