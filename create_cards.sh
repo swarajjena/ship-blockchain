@@ -1,32 +1,33 @@
 prefix="abc"
 rm -rf cards/*
 
-composer card create -f cards/voa11_$prefix.card -n smy -p ~/fabric-dev-servers/DevServer_connection.json -u VOA11 -s VOA11
+composer identity issue -c admin@smy -f cards/voa11_$prefix.card -u VOA11 -a "resource:org.hack.sagarmala.VOA#VOA11"
 
-composer card create -f cards/voa12_$prefix.card -n smy -p ~/fabric-dev-servers/DevServer_connection.json -u VOA12 -s VOA12
+composer identity issue -c admin@smy -f cards/voa12_$prefix.card -u VOA12 -a "resource:org.hack.sagarmala.VOA#VOA12"
 
-composer card create -f cards/voa13_$prefix.card -n smy -p ~/fabric-dev-servers/DevServer_connection.json -u VOA13 -s VOA13
+composer identity issue -c admin@smy -f cards/voa13_$prefix.card -u VOA13 -a "resource:org.hack.sagarmala.VOA#VOA13"
 
-composer card create -f cards/voa14_$prefix.card -n smy -p ~/fabric-dev-servers/DevServer_connection.json -u VOA14 -s VOA14
+composer identity issue -c admin@smy -f cards/voa14_$prefix.card -u VOA14 -a "resource:org.hack.sagarmala.VOA#VOA14"
 
-composer card create -f cards/voa15_$prefix.card -n smy -p ~/fabric-dev-servers/DevServer_connection.json -u VOA15 -s VOA15
+composer identity issue -c admin@smy -f cards/voa15_$prefix.card -u VOA15 -a "resource:org.hack.sagarmala.VOA#VOA15"
 
-composer card create -f cards/pa1_$prefix.card -n smy -p ~/fabric-dev-servers/DevServer_connection.json -u PA1 -s PA1
+composer identity issue -c admin@smy -f cards/pa1_$prefix.card -u PA1 -a "resource:org.hack.sagarmala.PA#PA1"
 
-composer card create -f cards/img1_$prefix.card -n smy -p ~/fabric-dev-servers/DevServer_connection.json -u IMMIGRATION1 -s IMMIGRATION1
+composer identity issue -c admin@smy -f cards/ta1_$prefix.card -u TA1 -a "resource:org.hack.sagarmala.TA#TA1"
 
-composer card create -f cards/customs1_$prefix.card -n smy -p ~/fabric-dev-servers/DevServer_connection.json -u CUSTOMS1 -s CUSTOMS1
+composer identity issue -c admin@smy -f cards/img1_$prefix.card -u IMMIGRATION1 -a "resource:org.hack.sagarmala.IMMIGRATION#IMMIGRATION1"
 
-composer card create -f cards/pho1_$prefix.card -n smy -p ~/fabric-dev-servers/DevServer_connection.json -u PHO1 -s PHO1
+composer identity issue -c admin@smy -f cards/customs1_$prefix.card -u CUSTOMS1 -a "resource:org.hack.sagarmala.CUSTOMS#CUSTOMS1"
 
-composer card create -f cards/oa11_$prefix.card -n smy -p ~/fabric-dev-servers/DevServer_connection.json -u OA11 -s OA11
+composer identity issue -c admin@smy -f cards/pho1_$prefix.card -u PHO1 -a "resource:org.hack.sagarmala.PHO#PHO1"
 
-composer card create -f cards/oa21_$prefix.card -n smy -p ~/fabric-dev-servers/DevServer_connection.json -u OA21 -s OA21
+composer identity issue -c admin@smy -f cards/oa11_$prefix.card -u OA11 -a "resource:org.hack.sagarmala.OA1#OA11"
 
-composer card create -f cards/ldb1_$prefix.card -n smy -p ~/fabric-dev-servers/DevServer_connection.json -u LDB1 -s LDB1
+composer identity issue -c admin@smy -f cards/oa21_$prefix.card -u OA21 -a "resource:org.hack.sagarmala.OA2#OA21"
 
-composer card create -f cards/cho1_$prefix.card -n smy -p ~/fabric-dev-servers/DevServer_connection.json -u CHO1 -s CHO1
+composer identity issue -c admin@smy -f cards/ldb1_$prefix.card -u LDB1 -a "resource:org.hack.sagarmala.LDB#LDB1"
 
-composer card create -f cards/coa1_$prefix.card -n smy -p ~/fabric-dev-servers/DevServer_connection.json -u COA1 -s COA1
+composer identity issue -c admin@smy -f cards/coa1_$prefix.card -u COA1 -a "resource:org.hack.sagarmala.COA#COA1"
 
-composer card create -f cards/ta1_$prefix.card -n smy -p ~/fabric-dev-servers/DevServer_connection.json -u TA1 -s TA1
+composer identity issue -c admin@smy -f cards/cha1_$prefix.card -u CHA1 -a "resource:org.hack.sagarmala.CHA1#CHA1"
+
