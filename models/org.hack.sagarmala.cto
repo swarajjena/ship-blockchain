@@ -264,3 +264,9 @@ transaction dummy_vessel{
 event TransactionNotification {
     --> Task task
 }
+
+
+event TaskAllotmentEvent {
+    --> Task task
+    o String assigneeID
+}
